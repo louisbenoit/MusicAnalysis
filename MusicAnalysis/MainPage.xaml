@@ -1,7 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="MusicAnalysis.MainPage">
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to the Music Analysis App" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
-    </StackLayout>
-</ContentPage>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="MusicAnalysis.MainPage">
+    <!--Pages can be added as references or inline-->
+    <ContentPage Title="Playlists">
+
+    </ContentPage>
+    <ContentPage Title="Search">
+
+    </ContentPage>
+    <ContentPage Title="Profile">
+        <StackLayout>
+            <Grid>
+                <Image x:Name="ProfilePicture"/>
+                <StackLayout>
+                    <Label Text="ProfileName"
+                           HorizontalOptions="Start" />
+                </StackLayout>
+            </Grid>
+            <Label Text="Favorite Song:"
+                           HorizontalOptions="Start" />
+            <Label Text="Song-Artist"
+                           HorizontalOptions="Center" />
+            <Label Text="Favorite Album:"
+                           HorizontalOptions="Start" />
+            <Label Text="Album-Artist"
+                           HorizontalOptions="Center" />
+            <Label Text="Favorite Artist:"
+                           HorizontalOptions="Start" />
+            <Label Text="Artist"
+                           HorizontalOptions="Center" />
+            <Label Text="Favorite Playlist:"
+                           HorizontalOptions="Start" />
+            <Label Text="Playlist-Playlist Creator"
+                           HorizontalOptions="Center" />
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>
