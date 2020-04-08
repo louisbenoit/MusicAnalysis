@@ -16,5 +16,10 @@ namespace MusicAnalysis
         {
             InitializeComponent();
         }
+        async void SearchClicked(object sender, EventArgs e)
+        {
+            string text = ((Entry)sender).Text;
+
+        }
     }
 }
