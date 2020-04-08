@@ -10,8 +10,8 @@
     <ContentPage Title="Search">
         <StackLayout>
             <SearchBar Placeholder="Search"
-                       SearchButtonPressed="SearchClicked"
-                       HorizontalTextAlignment="Center"/>
+                       BackgroundColor="White"
+                       SearchButtonPressed="SearchClicked"/>
         </StackLayout>
     </ContentPage>
     <ContentPage Title="Profile">
