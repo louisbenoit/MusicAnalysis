@@ -17,7 +17,6 @@
     <ContentPage Title="Profile">
         <StackLayout>
             <Grid>
-                <Image x:Name="ProfilePicture"/>
                 <StackLayout>
                     <Label Text="ProfileName"
                            HorizontalOptions="Start" />
