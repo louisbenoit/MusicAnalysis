@@ -95,7 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MusicAnalysis\MusicAnalysis.csproj">
-      <Project>{8F76B8F8-681D-4020-BA83-D8DD247F1424}</Project>
+      <Project>{B2ECB2F8-B1A9-41A7-8E69-128F418AD63F}</Project>
       <Name>MusicAnalysis</Name>
     </ProjectReference>
   </ItemGroup>
