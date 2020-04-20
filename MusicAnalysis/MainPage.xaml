@@ -2,22 +2,34 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="MusicAnalysis.MainPage"
-            BackgroundColor="Black">
+            >
     <!--Pages can be added as references or inline-->
     <ContentPage Title="Playlists">
-
     </ContentPage>
     <ContentPage Title="Search">
-        <StackLayout>
-            <SearchBar Placeholder="Search"
+        <StackLayout Orientation="Vertical">
+            <SearchBar x:Name="AlbumSearch" Placeholder="Search"
                        BackgroundColor="White"
                        SearchButtonPressed="SearchClicked"/>
+             <Image Source="https://i.scdn.co/image/ab67616d0000b273470c73929bebbe78a582ebc7" HeightRequest="150" />
+
+            <ListView x:Name="AlbumList" ItemsSource="{Binding Albums}"
+                      HeightRequest="150">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell IsEnabled="False">
+                        <StackLayout Padding="10">
+                            <Image Source="{Binding Albums}" HeightRequest="150" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage>
     <ContentPage Title="Profile">
         <StackLayout>
             <Grid>
-                <Image x:Name="ProfilePicture" Source="ProfilePicture"/>
                 <StackLayout>
                     <Label Text="ProfileName"
                            HorizontalOptions="Start" />

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using MusicAnalysis.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,14 +8,17 @@ namespace MusicAnalysis
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : TabbedPage
     {
+        SearchResult viewModel;
+
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = viewModel = new SearchResult();
         }
         async void SearchClicked(object sender, EventArgs e)
         {
-            string text = ((Entry)sender).Text;
-
+            SearchBar sb = FindByName("AlbumSearch") as SearchBar;
+            await viewModel.SearchAlbums(sb.Text);
         }
     }
 }
