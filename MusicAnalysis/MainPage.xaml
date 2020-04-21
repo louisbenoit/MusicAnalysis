@@ -11,19 +11,17 @@
             <SearchBar x:Name="AlbumSearch" Placeholder="Search"
                        BackgroundColor="White"
                        SearchButtonPressed="SearchClicked"/>
-             <Image Source="https://i.scdn.co/image/ab67616d0000b273470c73929bebbe78a582ebc7" HeightRequest="150" />
-
-            <ListView x:Name="AlbumList" ItemsSource="{Binding Albums}"
-                      HeightRequest="150">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell IsEnabled="False">
-                        <StackLayout Padding="10">
-                            <Image Source="{Binding Albums}" HeightRequest="150" />
+            <ListView x:Name="AlbumList" ItemsSource="{Binding Albums}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                        <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="10"> 
+                            <Image Aspect="AspectFill" Source="{Binding Url}" HeightRequest="300" />
+                            <Label Text="Example Text" YAlign="Center" Font="Medium" />
                         </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
     </ContentPage>

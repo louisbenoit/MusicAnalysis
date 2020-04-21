@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ using SpotifyAPI.Web.Models;
 
 namespace MusicAnalysis.ViewModels
 {
-    public class SearchResult
+    public class SearchResult 
     {
         public ObservableCollection<Image> Albums { get; set; }
 
@@ -18,6 +19,7 @@ namespace MusicAnalysis.ViewModels
 
         public SearchResult()
         {
+            Albums = new ObservableCollection<Image>();
             GetBearerToken().Wait();
         }
 
@@ -55,11 +57,24 @@ namespace MusicAnalysis.ViewModels
 
             var searchResult = await api.SearchItemsAsync(searchString, SpotifyAPI.Web.Enums.SearchType.Album);
 
-            Albums = new ObservableCollection<Image>();
+            Albums.Clear();
 
-            foreach (var album in searchResult.Albums.Items)
+            if (null != searchResult.Albums)
             {
-                Albums.Add(album.Images[0]);
+                if (searchResult.Albums.Items.Count > 0)
+                {
+                    foreach (var album in searchResult.Albums.Items)
+                    {
+                        if (album.Images.Count > 0)
+                        {
+                            if (album.Images[0] is Image)
+                            {
+                                Console.WriteLine(album.Images[0].Url);
+                                Albums.Add(album.Images[0] as Image);
+                            }
+                        }
+                    }
+                }
             }
 
             return true;
