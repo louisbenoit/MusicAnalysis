@@ -4,17 +4,18 @@
             x:Class="MusicAnalysis.MainPage"
             >
     <!--Pages can be added as references or inline-->
-    <ContentPage Title="Playlists">
+    <!--Padding="L,T,R,B" -->
+    <ContentPage Title="Playlists" Padding="15,10,15,10">
 
     </ContentPage>
     <ContentPage Title="Search">
-        <StackLayout>
+        <StackLayout Padding="15,10,15,10">
             <SearchBar Placeholder="Search"
                        BackgroundColor="White"
-                       SearchButtonPressed="SearchClicked"/>
+                       />
         </StackLayout>
     </ContentPage>
-    <ContentPage Title="Profile">
+    <ContentPage Title="Profile" Padding="15,10,15,10">
         <StackLayout>
             <Grid>
                 <StackLayout>
@@ -25,7 +26,7 @@
             <Label Text="Favorite Song:"
                            HorizontalOptions="Start" />
             <Label Text="Song-Artist"
-                           HorizontalOptions="Center" />
+                           HorizontalOptions="End" />
             <Label Text="Favorite Album:"
                            HorizontalOptions="Start" />
             <Label Text="Album-Artist"
@@ -37,7 +38,8 @@
             <Label Text="Favorite Playlist:"
                            HorizontalOptions="Start" />
             <Label Text="Playlist-Playlist Creator"
-                           HorizontalOptions="Center" />
+                           HorizontalOptions="Center"
+                           VerticalOptions="End"/>
         </StackLayout>
     </ContentPage>
 </TabbedPage>
