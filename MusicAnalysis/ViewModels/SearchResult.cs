@@ -11,15 +11,21 @@ using SpotifyAPI.Web.Models;
 
 namespace MusicAnalysis.ViewModels
 {
+    public class MyAlbum
+    {
+        public string Url { get; set; }
+        public string Name { get; set; }
+    }
+
     public class SearchResult 
     {
-        public ObservableCollection<Image> Albums { get; set; }
+        public ObservableCollection<MyAlbum> Albums { get; set; }
 
         private string BearerToken;
 
         public SearchResult()
         {
-            Albums = new ObservableCollection<Image>();
+            Albums = new ObservableCollection<MyAlbum>();
             GetBearerToken().Wait();
         }
 
@@ -70,7 +76,8 @@ namespace MusicAnalysis.ViewModels
                             if (album.Images[0] is Image)
                             {
                                 Console.WriteLine(album.Images[0].Url);
-                                Albums.Add(album.Images[0] as Image);
+                                var addedAlbum = new MyAlbum { Url = album.Images[0].Url, Name = album.Name };
+                                Albums.Add(addedAlbum);
                             }
                         }
                     }
