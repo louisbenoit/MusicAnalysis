@@ -52,7 +52,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.530" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.617" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.2" />
     <PackageReference Include="SpotifyAPI.Web">
       <Version>5.1.0</Version>
@@ -89,13 +89,17 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\ProfilePicture.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MusicAnalysis\MusicAnalysis.csproj">
-      <Project>{8F76B8F8-681D-4020-BA83-D8DD247F1424}</Project>
+      <Project>{B2ECB2F8-B1A9-41A7-8E69-128F418AD63F}</Project>
       <Name>MusicAnalysis</Name>
     </ProjectReference>
   </ItemGroup>

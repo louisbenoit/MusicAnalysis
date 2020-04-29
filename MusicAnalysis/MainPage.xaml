@@ -4,15 +4,25 @@
             x:Class="MusicAnalysis.MainPage"
             >
     <!--Pages can be added as references or inline-->
-    <!--Padding="L,T,R,B" -->
-    <ContentPage Title="Playlists" Padding="15,10,15,10">
-
+    <ContentPage Title="Playlists">
     </ContentPage>
     <ContentPage Title="Search">
-        <StackLayout Padding="15,10,15,10">
-            <SearchBar Placeholder="Search"
+        <StackLayout Orientation="Vertical">
+            <SearchBar x:Name="AlbumSearch" Placeholder="Search"
                        BackgroundColor="White"
-                       />
+                       SearchButtonPressed="SearchClicked"/>
+            <ListView x:Name="AlbumList" ItemsSource="{Binding Albums}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                        <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="10"> 
+                            <Image Aspect="AspectFit" Source="{Binding Url}" HeightRequest="300" />
+                            <Label Text="{Binding Name}" YAlign="Center" Font="Medium" />
+                        </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage>
     <ContentPage Title="Profile" Padding="15,10,15,10">
