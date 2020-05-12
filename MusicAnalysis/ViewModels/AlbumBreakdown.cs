@@ -11,25 +11,29 @@ using SpotifyAPI.Web.Models;
 
 namespace MusicAnalysis.ViewModels
 {
-    public class MyAlbum
+    public class AlbumBreakdown
     {
-        public string Url { get; set; }
-        public string Name { get; set; }
-        public string ID { get; set; }
-    }
-
-    public class SearchResult 
-    {
-        public ObservableCollection<MyAlbum> Albums { get; set; }
-
+        public ObservableCollection<MyTrack> Tracks { get; set; }
         private string BearerToken;
+        private string ID;
 
-        public SearchResult()
+        public AlbumBreakdown(String ID)
         {
-            Albums = new ObservableCollection<MyAlbum>();
+            this.ID = ID;
             GetBearerToken().Wait();
         }
 
+        public class MyTrack
+        {
+            public string Url { get; set; }
+            public string Artist { get; set; }
+            public string TrackName { get; set; }
+
+        }
+
+
+
+        //Get the bearer token for Spotify
         private async Task<bool> GetBearerToken()
         {
             var credentials = "a3f9f652c64149a49a869f8391711492:19933680108d4bb6885d14f2d8b0dcd8";
@@ -54,7 +58,7 @@ namespace MusicAnalysis.ViewModels
             return true;
         }
 
-        public async Task<bool> SearchAlbums(string searchString)
+        public async Task<bool> FullAlbumGetAsync()
         {
             SpotifyWebAPI api = new SpotifyWebAPI
             {
@@ -62,30 +66,24 @@ namespace MusicAnalysis.ViewModels
                 TokenType = "Bearer"
             };
 
-            var searchResult = await api.SearchItemsAsync(searchString, SpotifyAPI.Web.Enums.SearchType.Album);
+            var album = await api.GetAlbumAsync(ID);
 
-            Albums.Clear();
-
-            if (null != searchResult.Albums)
+            if (album.TotalTracks > 0)
             {
-                if (searchResult.Albums.Items.Count > 0)
+                foreach (var track in album.Tracks.Items)
                 {
-                    foreach (var album in searchResult.Albums.Items)
-                    {
-                        if (album.Images.Count > 0)
-                        {
-                            if (album.Images[0] is Image)
-                            {
-                                Console.WriteLine(album.Images[0].Url);
-                                var addedAlbum = new MyAlbum { Url = album.Images[0].Url, Name = album.Name, ID = album.Id };
-                                Albums.Add(addedAlbum);
-                            }
-                        }
-                    }
+                    //var addedTrack = new MyTrack { TrackName = album.Tracks.Items.}
+
                 }
+
             }
+
 
             return true;
         }
+
+
+
+
     }
 }

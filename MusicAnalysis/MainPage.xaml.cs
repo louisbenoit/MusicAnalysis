@@ -20,6 +20,12 @@ namespace MusicAnalysis
             SearchBar sb = FindByName("AlbumSearch") as SearchBar;
             await viewModel.SearchAlbums(sb.Text);
         }
+        async void ImageButtonClicked(object sender, EventArgs e)
+        {
+            ImageButton ib = FindByName("SelectedAlbum") as ImageButton;
+            await Navigation.PushAsync(new AlbumPage(ib.AutomationId));
+            
+        }
         //async Task<object> SearchClicked(object sender, EventArgs e)
         //{
         //    string text = ((Entry)sender).Text;

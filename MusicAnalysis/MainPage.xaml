@@ -4,20 +4,33 @@
             x:Class="MusicAnalysis.MainPage"
             >
     <!--Pages can be added as references or inline-->
-    <ContentPage Title="Playlists">
-    </ContentPage>
     <ContentPage Title="Search">
         <StackLayout Orientation="Vertical">
-            <SearchBar x:Name="AlbumSearch" Placeholder="Search"
+            <SearchBar x:Name="AlbumSearch"
+                       Placeholder="Search"
                        BackgroundColor="White"
-                       SearchButtonPressed="SearchClicked"/>
-            <ListView x:Name="AlbumList" ItemsSource="{Binding Albums}" HasUnevenRows="True">
+                       SearchButtonPressed="SearchClicked"
+                       />
+            <ListView x:Name="AlbumList"
+                      ItemsSource="{Binding Albums}"
+                      HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell >
-                        <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="10"> 
-                            <Image Aspect="AspectFit" Source="{Binding Url}" HeightRequest="300" />
-                            <Label Text="{Binding Name}" YAlign="Center" Font="Medium" />
+                        <ViewCell>
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                     Orientation="Horizontal"
+                                     Padding="10"> 
+                            <ImageButton Aspect="AspectFit"
+                                         Source="{Binding Url}"
+                                         HeightRequest="300"
+                                         AutomationId="{Binding ID}"
+                                         Clicked="ImageButtonClicked"
+                                         x:Name="SelectedAlbum"
+                                         />
+                            <Label Text="{Binding Name}"
+                                   YAlign="Center"
+                                   Font="Medium"
+                                   />
                         </StackLayout>
                         </ViewCell>
                     </DataTemplate>
@@ -25,31 +38,5 @@
             </ListView>
         </StackLayout>
     </ContentPage>
-    <ContentPage Title="Profile" Padding="15,10,15,10">
-        <StackLayout>
-            <Grid>
-                <StackLayout>
-                    <Label Text="ProfileName"
-                           HorizontalOptions="Start" />
-                </StackLayout>
-            </Grid>
-            <Label Text="Favorite Song:"
-                           HorizontalOptions="Start" />
-            <Label Text="Song-Artist"
-                           HorizontalOptions="End" />
-            <Label Text="Favorite Album:"
-                           HorizontalOptions="Start" />
-            <Label Text="Album-Artist"
-                           HorizontalOptions="Center" />
-            <Label Text="Favorite Artist:"
-                           HorizontalOptions="Start" />
-            <Label Text="Artist"
-                           HorizontalOptions="Center" />
-            <Label Text="Favorite Playlist:"
-                           HorizontalOptions="Start" />
-            <Label Text="Playlist-Playlist Creator"
-                           HorizontalOptions="Center"
-                           VerticalOptions="End"/>
-        </StackLayout>
-    </ContentPage>
+    
 </TabbedPage>
