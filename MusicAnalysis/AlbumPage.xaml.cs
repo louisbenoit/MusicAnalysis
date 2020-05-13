@@ -1,4 +1,5 @@
-﻿using MusicAnalysis.ViewModels;
+﻿using System.Threading.Tasks;
+using MusicAnalysis.ViewModels;
 using Xamarin.Forms;
 
 namespace MusicAnalysis
@@ -10,8 +11,7 @@ namespace MusicAnalysis
         {
             InitializeComponent();
             BindingContext = viewModel = new AlbumBreakdown(ID);
-            viewModel.FullAlbumGetAsync().Wait();
-
+            Task.Run(async () => { await viewModel.FullAlbumGetAsync(); });
         }
 
     }

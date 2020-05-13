@@ -31,7 +31,7 @@ namespace MusicAnalysis.ViewModels
             this.ID = ID;
             //GetBearerToken().Wait();
             BearerToken = Application.Current.Properties["BearerToken"].ToString();
-
+            Tracks = new ObservableCollection<MyTrack>();
         }
 
         //Get the bearer token for Spotify
@@ -70,13 +70,6 @@ namespace MusicAnalysis.ViewModels
             var album = await api.GetAlbumAsync(ID);
 
             Tracks.Clear();
-            //if (null != album.Tracks)
-            //{
-            //    if (album.TotalTracks > 0)
-            //    {
-            //        foreach( var track in al)
-            //    }
-            //}
 
             if (album.TotalTracks > 0)
             {
@@ -86,7 +79,6 @@ namespace MusicAnalysis.ViewModels
                     Tracks.Add(addedTrack);
                 }
             }
-
 
             return true;
         }        
