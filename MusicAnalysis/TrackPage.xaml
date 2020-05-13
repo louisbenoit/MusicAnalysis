@@ -11,6 +11,10 @@
                             <StackLayout VerticalOptions="FillAndExpand"
                                          Orientation="Vertical"
                                          Padding="10">
+                                <ImageButton Source="{Binding Url}"
+                                             HeightRequest="200"
+                                             BackgroundColor="White"
+                                             />
                                 <Label Text="{Binding TrackName}"
                                        VerticalOptions="Center"
                                        HorizontalOptions="CenterAndExpand"

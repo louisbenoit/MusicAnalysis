@@ -21,6 +21,7 @@
                                      Orientation="Horizontal"
                                      Padding="10"> 
                             <ImageButton Aspect="AspectFit"
+                                         BackgroundColor="White"
                                          Source="{Binding Url}"
                                          HeightRequest="300"
                                          AutomationId="{Binding ID}"

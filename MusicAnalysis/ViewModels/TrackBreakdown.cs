@@ -67,7 +67,7 @@ namespace MusicAnalysis.ViewModels
             var fullAlbum = await api.GetAlbumAsync(ID);
             TrackExtended trackExtended = new TrackExtended();
 
-            //trackExtended.Url = fullAlbum.Images[0].Url;
+            trackExtended.Url = fullTrack.Album.Images[0].Url;
             trackExtended.Artist = fullTrack.Artists[0].Name;
             trackExtended.TrackName = fullTrack.Name;
             trackExtended.Acousticness = trackAudioFeatures.Acousticness;
