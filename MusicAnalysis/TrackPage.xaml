@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MusicAnalysis.TrackPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="TrackBreak"
+                      ItemsSource="{Binding Tracks}"
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout VerticalOptions="FillAndExpand"
+                                         Orientation="Vertical"
+                                         Padding="10">
+                                <Label Text="{Binding TrackName}"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="CenterAndExpand"
+                                       FontSize="Title"
+                                       AutomationId="{Binding ID}"
+                                       />
+                                <Label Text="{Binding Artist}"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="CenterAndExpand"
+                                       FontSize="Subtitle"
+                                       />
+                                <Label Text="Spotify Ratings"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Start"
+                                       FontSize="Subtitle"
+                                       />
+                                <StackLayout VerticalOptions="FillAndExpand"
+                                             Orientation="Horizontal"
+                                             Padding="10">
+                                    <Label Text="Acousticness:"
+                                           VerticalOptions="Center"
+                                           />
+                                    <Label Text="{Binding Acousticness}"
+                                           VerticalOptions="Center"
+                                           />
+                                </StackLayout>
+                                <StackLayout VerticalOptions="FillAndExpand"
+                                             Orientation="Horizontal"
+                                             Padding="10">
+                                    <Label Text="Danceability:"
+                                           VerticalOptions="Center"
+                                           />
+                                    <Label Text="{Binding Danceability}"
+                                       VerticalOptions="Center"
+                                       />
+                                </StackLayout>
+                                <StackLayout VerticalOptions="FillAndExpand"
+                                             Orientation="Horizontal"
+                                             Padding="10">
+                                    <Label Text="Energy:"
+                                           VerticalOptions="Center"
+                                           />
+                                    <Label Text="{Binding Energy}"
+                                           VerticalOptions="Center"
+                                           />
+                                </StackLayout>
+                                <StackLayout VerticalOptions="FillAndExpand"
+                                             Orientation="Horizontal"
+                                             Padding="10">
+                                    <Label Text="Instrumentalness:"
+                                           VerticalOptions="Center"
+                                           />
+                                    <Label Text="{Binding Instrumentalness}"
+                                           VerticalOptions="Center"
+                                           />
+                                </StackLayout>
+                                <StackLayout VerticalOptions="FillAndExpand"
+                                             Orientation="Horizontal"
+                                             Padding="10">
+                                    <Label Text="Loudness:"
+                                           VerticalOptions="Center"
+                                           />
+                                    <Label Text="{Binding Loudness}"
+                                           VerticalOptions="Center"
+                                           />
+                                </StackLayout>
+                                <StackLayout VerticalOptions="FillAndExpand"
+                                             Orientation="Horizontal"
+                                             Padding="10">
+                                    <Label Text="Tempo:"
+                                           VerticalOptions="Center"
+                                           />
+                                    <Label Text="{Binding Tempo}"
+                                           VerticalOptions="Center"
+                                           />
+                                </StackLayout>
+                                <StackLayout VerticalOptions="FillAndExpand"
+                                             Orientation="Horizontal"
+                                             Padding="10">
+                                    <Label Text="Key:"
+                                           VerticalOptions="Center"
+                                           />
+                                    <Label Text="{Binding Key}"
+                                           VerticalOptions="Center"
+                                           />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

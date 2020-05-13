@@ -12,7 +12,7 @@ using Xamarin.Forms;
 
 namespace MusicAnalysis.ViewModels
 {
-    public class MyTrack
+    public class TheTrack
     {
         public string ID { get; set; }
         public string Artist { get; set; }
@@ -22,7 +22,7 @@ namespace MusicAnalysis.ViewModels
 
     public class AlbumBreakdown
     {
-        public ObservableCollection<MyTrack> Tracks { get; set; }
+        public ObservableCollection<TheTrack> Tracks { get; set; }
         private string BearerToken;
         private string ID;
 
@@ -31,10 +31,12 @@ namespace MusicAnalysis.ViewModels
             this.ID = ID;
             //GetBearerToken().Wait();
             BearerToken = Application.Current.Properties["BearerToken"].ToString();
-            Tracks = new ObservableCollection<MyTrack>();
+            Tracks = new ObservableCollection<TheTrack>();
         }
 
         //Get the bearer token for Spotify
+        //Not Neccesary in this class anymore
+        //Only needed in SearchResult.cs
         private async Task<bool> GetBearerToken()
         {
             var credentials = "a3f9f652c64149a49a869f8391711492:19933680108d4bb6885d14f2d8b0dcd8";
@@ -75,7 +77,7 @@ namespace MusicAnalysis.ViewModels
             {
                 for (int index = 0; index < album.TotalTracks; index++) //(Changed from foreach)var track in album.Tracks.Items)
                 {
-                    var addedTrack = new MyTrack { TrackName = album.Tracks.Items[index].Name, ID = album.Tracks.Items[index].Id };
+                    var addedTrack = new TheTrack { TrackName = album.Tracks.Items[index].Name, ID = album.Tracks.Items[index].Id };
                     Tracks.Add(addedTrack);
                 }
             }
