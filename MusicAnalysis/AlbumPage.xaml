@@ -9,14 +9,12 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout VerticalOptions="FillAndExpand"
-                                     Orientation="Horizontal"
-                                     Padding="10">
-                                <Button Source="{Binding Name}"
-                                        HeightRequest="300"
-                                        AutomationId="{Binding ID}"
-                                        Clicked="ImageButtonClicked"
-                                        x:Name="SelectedAlbum"
-                                        />
+                                         Orientation="Horizontal"
+                                         Padding="10">
+                                <Label Text="{Binding TrackName}"
+                                       HeightRequest="100"
+                                       AutomationId="{Binding ID}"
+                                       />
                                 
                             </StackLayout>
                         </ViewCell>

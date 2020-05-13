@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using SpotifyAPI.Web;
 using SpotifyAPI.Web.Models;
+using Xamarin.Forms;
+using Image = SpotifyAPI.Web.Models.Image;
 
 namespace MusicAnalysis.ViewModels
 {
@@ -27,7 +29,10 @@ namespace MusicAnalysis.ViewModels
         public SearchResult()
         {
             Albums = new ObservableCollection<MyAlbum>();
-            GetBearerToken().Wait();
+            if (!Application.Current.Properties.ContainsKey("BearerToken"))
+            {
+                Task.Run(async () => { await this.GetBearerToken(); });
+            }
         }
 
         private async Task<bool> GetBearerToken()
@@ -50,6 +55,7 @@ namespace MusicAnalysis.ViewModels
             var responseDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseString);
 
             BearerToken = responseDictionary["access_token"];
+            Application.Current.Properties["BearerToken"] = BearerToken;
 
             return true;
         }

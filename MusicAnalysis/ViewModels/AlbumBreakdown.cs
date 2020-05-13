@@ -8,9 +8,18 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using SpotifyAPI.Web;
 using SpotifyAPI.Web.Models;
+using Xamarin.Forms;
 
 namespace MusicAnalysis.ViewModels
 {
+    public class MyTrack
+    {
+        public string ID { get; set; }
+        public string Artist { get; set; }
+        public string TrackName { get; set; }
+
+    }
+
     public class AlbumBreakdown
     {
         public ObservableCollection<MyTrack> Tracks { get; set; }
@@ -20,18 +29,10 @@ namespace MusicAnalysis.ViewModels
         public AlbumBreakdown(String ID)
         {
             this.ID = ID;
-            GetBearerToken().Wait();
-        }
-
-        public class MyTrack
-        {
-            public string Url { get; set; }
-            public string Artist { get; set; }
-            public string TrackName { get; set; }
+            //GetBearerToken().Wait();
+            BearerToken = Application.Current.Properties["BearerToken"].ToString();
 
         }
-
-
 
         //Get the bearer token for Spotify
         private async Task<bool> GetBearerToken()
@@ -68,22 +69,26 @@ namespace MusicAnalysis.ViewModels
 
             var album = await api.GetAlbumAsync(ID);
 
+            Tracks.Clear();
+            //if (null != album.Tracks)
+            //{
+            //    if (album.TotalTracks > 0)
+            //    {
+            //        foreach( var track in al)
+            //    }
+            //}
+
             if (album.TotalTracks > 0)
             {
-                foreach (var track in album.Tracks.Items)
+                for (int index = 0; index < album.TotalTracks; index++) //(Changed from foreach)var track in album.Tracks.Items)
                 {
-                    //var addedTrack = new MyTrack { TrackName = album.Tracks.Items.}
-
+                    var addedTrack = new MyTrack { TrackName = album.Tracks.Items[index].Name, ID = album.Tracks.Items[index].Id };
+                    Tracks.Add(addedTrack);
                 }
-
             }
 
 
             return true;
-        }
-
-
-
-
+        }        
     }
 }

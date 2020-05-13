@@ -22,7 +22,7 @@ namespace MusicAnalysis
         }
         async void ImageButtonClicked(object sender, EventArgs e)
         {
-            ImageButton ib = FindByName("SelectedAlbum") as ImageButton;
+            ImageButton ib = sender as ImageButton;
             await Navigation.PushAsync(new AlbumPage(ib.AutomationId));
             
         }
